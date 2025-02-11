@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Valentine Proposal</title>
-  <!-- Internal CSS: Place your styling code here -->
   <style>
-    /* General Styles */
     body {
       background-color: red;
       color: white;
@@ -16,20 +14,16 @@
       margin: 0;
       padding: 0;
     }
-    
     .container {
       position: relative;
       top: 20%;
     }
-    
     h1 {
       font-size: 2.5em;
     }
-    
     .sub-text {
       font-size: 1.2em;
     }
-    
     button {
       background-color: white;
       color: red;
@@ -40,27 +34,21 @@
       margin-top: 20px;
       border-radius: 5px;
     }
-    
     button:hover {
       background-color: pink;
     }
-    
     .hidden {
       display: none;
     }
-    
     .poem {
       font-size: 1.5em;
       margin-top: 20px;
       line-height: 1.5;
     }
-    
-    /* Falling heart animation */
     @keyframes fall {
       0% { transform: translateY(-10px) scale(0.5); opacity: 1; }
       100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
     }
-    
     .heart {
       position: absolute;
       color: white;
@@ -70,13 +58,11 @@
   </style>
 </head>
 <body>
-  <!-- Background Music -->
   <audio autoplay loop>
     <source src="love-music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Main Content -->
   <div class="container">
     <h1>Astha, will you be my Valentine? ❤️</h1>
     <p class="sub-text">A surprise awaits you inside...</p>
@@ -94,19 +80,16 @@
     </div>
   </div>
 
-  <!-- JavaScript: Place your script before the closing body tag -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const poemContainer = document.getElementById("poem-container");
       const revealBtn = document.getElementById("reveal-btn");
 
-      // Show the poem when the button is clicked
       revealBtn.addEventListener("click", function() {
         poemContainer.classList.remove("hidden");
         revealBtn.style.display = "none";
       });
 
-      // Create falling hearts effect
       function createHeart() {
         let heart = document.createElement("div");
         heart.innerHTML = "❤️";
@@ -114,25 +97,16 @@
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.animationDuration = Math.random() * 3 + 2 + "s";
         document.body.appendChild(heart);
-
-        // Remove the heart after 5 seconds
-        setTimeout(() => {
-          heart.remove();
-        }, 5000);
+        setTimeout(() => { heart.remove(); }, 5000);
       }
-        // Remove the heart after 5 seconds
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
+      setInterval(createHeart, 500);
+    });
+  </script>
 
-    // Audio Player
-    let audio = document.createElement("audio");
-    audio.controls = true;
-    let source = document.createElement("source");
-    source.src = "Huzoor Mera (KoshalWorld.Com).mp3;
-    source.type = "audio/mpeg";
-    audio.appendChild(source);
-    document.body.appendChild(audio);
-    
-    // Generate a falling heart every 500 milliseconds
-
+  <!-- Audio Player for the song -->
+  <audio controls>
+    <source src="Huzoor Mera (KoshalWorld.Com).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</body>
+</html>
