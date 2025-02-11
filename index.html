@@ -120,10 +120,19 @@
           heart.remove();
         }, 5000);
       }
-      
-      // Generate a falling heart every 500 milliseconds
-      setInterval(createHeart, 500);
-    });
-  </script>
-</body>
-</html>
+        // Remove the heart after 5 seconds
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+
+    // Audio Player
+    let audio = document.createElement("audio");
+    audio.controls = true;
+    let source = document.createElement("source");
+    source.src = "Huzoor Mera (KoshalWorld.Com).mp3;
+    source.type = "audio/mpeg";
+    audio.appendChild(source);
+    document.body.appendChild(audio);
+    
+    // Generate a falling heart every 500 milliseconds
+
