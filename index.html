@@ -3,62 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astha, My Valentine?</title>
+    <title>Astha, Will You Be My Valentine?</title>
     <style>
         body {
             background-color: red;
             color: white;
-            font-family: Arial, sans-serif;
             text-align: center;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
         }
-
-        h1 {
-            margin-top: 20%;
-            font-size: 2.5em;
+        .falling-hearts {
+            position: absolute;
+            animation: fall 5s linear infinite;
         }
-
-        #yesBtn {
+        @keyframes fall {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(100vh); }
+        }
+        .hidden {
+            display: none;
+        }
+        .poem {
+            margin-top: 50px;
+            font-size: 20px;
+        }
+        button {
             background-color: white;
             color: red;
             font-size: 20px;
             padding: 10px 20px;
             border: none;
             cursor: pointer;
-            margin-top: 20px;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-
-        #poem {
-            display: none;
-            font-size: 1.5em;
-            margin-top: 20px;
-        }
-
-        /* Falling Hearts */
-        .heart {
-            position: fixed;
-            top: -50px;
-            font-size: 25px;
-            animation: fall linear infinite;
-            color: pink;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
         }
     </style>
 </head>
 <body>
-    <h1>Astha, Will you be my Valentine? ❤️</h1>
-    <p>A surprise for you inside...</p>
-    <button id="yesBtn" onclick="showPoem()">Click YES to know</button>
 
-    <div id="poem">
+    <h1>Astha, Will You Be My Valentine?</h1>
+    <p>A surprise for you inside</p>
+    <button onclick="showPoem()">Click Yes to Know</button>
+
+    <div id="poemContainer" class="hidden poem">
         <p>"You are my melody divine,<br>
         Will you be my Valentine?<br>
         Your smile’s stronger than the finest wine😉<br>
@@ -67,33 +52,15 @@
         Like stars that in the heavens shine."</p>
     </div>
 
-    <audio id="bgMusic" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-    </audio>
+    <audio id="loveMusic" src="your-music-file.mp3" preload="auto"></audio>
 
     <script>
         function showPoem() {
-            document.getElementById("poem").style.display = "block";
-            document.getElementById("yesBtn").style.display = "none";
-            document.getElementById("bgMusic").play();
+            document.getElementById("poemContainer").classList.remove("hidden");
+            document.getElementById("poemContainer").scrollIntoView({ behavior: "smooth" });
+            document.getElementById("loveMusic").play();
         }
-
-        // Function to create falling hearts
-        function createHeart() {
-            let heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerHTML = "❤️";
-            document.body.appendChild(heart);
-            
-            heart.style.left = Math.random() * window.innerWidth + "px";
-            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
-        }
-
-        setInterval(createHeart, 300);
     </script>
+
 </body>
 </html>
